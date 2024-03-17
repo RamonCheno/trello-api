@@ -4,6 +4,6 @@ import routerCategory from "./category.controller.js";
 
 const router = Router();
 
-router.use('/category', routerCategory)
-router.use("/task");
+router.use('/category', routerCategory);
+// router.use("/task");
 export default router;

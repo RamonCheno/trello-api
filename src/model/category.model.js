@@ -7,7 +7,7 @@ export async function getCategoryById(idCategory) {
     return res.rows[0];
 }
 
-export async function insertCategory(name) {
+export const insertCategory = async (name) => {
     const id = await pool.query("SELECT * FROM category WHERE name_category = ' ' limit 1");
 
     console.log(id.rows.length);
@@ -24,7 +24,7 @@ export async function insertCategory(name) {
     }
 }
 
-async function newCategoryById(name) {
+export const newCategoryById = async (name) => {
     const isEmptyQuery = "SELECT id_category FROM category WHERE name_category = ' '";
     // console.log(isEmptyQuery.length);
     const idVoid = await pool.query(isEmptyQuery);
@@ -36,7 +36,7 @@ async function newCategoryById(name) {
     return result.rows;
 }
 
-async function rowCounts(columnaId, tableName) {
+export const rowCounts = async (columnaId, tableName) => {
     const text = 'SELECT MAX(' + columnaId + ') AS max_id FROM ' + tableName;
     // const value = [columnaId, tableName];
     const result = await pool.query(text);
@@ -44,26 +44,26 @@ async function rowCounts(columnaId, tableName) {
     return maxRow;
 }
 
-export async function getCategoryAll() {
+export const getCategoryAll = async () => {
     const result = await pool.query('SELECT * FROM category ORDER BY id_category');
     return result.rows;
 }
 
-export async function updateCategory(id, name) {
+export const updateCategory = async (id, name) => {
     const query = 'UPDATE category SET name_category = $1 WHERE id_category = $2';
     const values = [name, id];
     const result = await pool.query(query, values);
     return result.rows;
 }
 
-export async function deleteNameCategory(id) {
+export const deleteNameCategory = async (id) => {
     const query = "UPDATE category SET name_category = ' ' WHERE id_category = $1";
     const value = [id];
     const result = await pool.query(query, value);
     return result.rows;
 }
 
-export async function deleteLastCategory() {
+export const deleteLastCategory = async () => {
     const idDelete = await pool.query("SELECT MAX(id_category) as max_id FROM category");
     const query = "DELETE FROM category WHERE id_category = $1";
     const value = [idDelete.rows[0].max_id];
