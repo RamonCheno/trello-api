@@ -1,4 +1,5 @@
-import swaggerAutogen from 'swagger-autogen';
+const swaggerAutogen = require('swagger-autogen')();
+// import {  } from "./routes/index.router.js";
 
 const doc = {
   info: {
@@ -10,9 +11,9 @@ const doc = {
 };
 
 const outputFile = './swagger.json';
-const endPointsFiles = ['./controllers/index.controllers.js'];
+const endPointsFiles = ['./routes/index.router.js'];
 
-swaggerAutogen()(outputFile, endPointsFiles, doc).then(async () => {
-  await import('./index.js');
+swaggerAutogen(outputFile, endPointsFiles, doc).then(() => {
+  require('./index.js');
 });
 

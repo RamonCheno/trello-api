@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "swagger": "node src/swagger.js"
   },
   "keywords": [],
@@ -22,6 +21,8 @@
     "express": "^4.18.3",
     "fs": "^0.0.1-security",
     "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.1",
     "swagger-ui-express": "^5.0.0"
   }
 }

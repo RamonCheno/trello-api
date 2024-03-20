@@ -11,17 +11,31 @@
     "http"
   ],
   "paths": {
-    "/category/all": {
+    "/api/v1/category/": {
       "get": {
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/category/{id}": {
+    "/api/v1/category/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -35,6 +49,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -46,26 +63,14 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nameCategory": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -82,43 +87,9 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/category/new": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nameCategory": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
           },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/category/last": {
-      "delete": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
