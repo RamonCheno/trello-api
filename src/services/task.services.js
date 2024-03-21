@@ -1,21 +1,24 @@
+const taskModel = require('./../db/models').Tasks;
 const categoryModel = require('./../db/models').Category;
 
-class CategoryServices {
+class TaskServices {
 
     constructor() { }
 
     async find() {
-        const res = await categoryModel.findAll();
+        const res = await taskModel.findAll({
+            include: [{ model: categoryModel, required: true }]
+        });
         return res;
     }
 
     async findOne(id) {
-        const res = await categoryModel.findByPk(id);
+        const res = await taskModel.findByPk(id);
         return res;
     }
 
     async create(data) {
-        const res = await categoryModel.create(data);
+        const res = await taskModel.create(data);
         return res;
     }
 
@@ -33,4 +36,4 @@ class CategoryServices {
 
 }
 
-module.exports = CategoryServices;
+module.exports = TaskServices;
