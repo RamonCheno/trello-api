@@ -19,22 +19,9 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "Obtencion de todas la categorias",
+            "description": "Obtencion de todas las categorias",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number",
-                  "example": 2
-                },
-                "name": {
-                  "type": "string",
-                  "example": "no importante"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
+              "$ref": "#/definitions/Category"
             }
           },
           "500": {
@@ -61,20 +48,7 @@
           "200": {
             "description": "Obtencion de una categoria por id",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number",
-                  "example": 1
-                },
-                "name": {
-                  "type": "string",
-                  "example": "importante"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
+              "$ref": "#/definitions/Category"
             }
           },
           "500": {
@@ -92,12 +66,24 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Busqueda de id para seleccionar categoria a modificar"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos para nuevo registro",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Resultado de la categoria modificada",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -133,20 +119,21 @@
           "Category"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos para nuevo registro",
+            "schema": {
+              "$ref": "#/definitions/AddCategory"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Registro de nueva categoria",
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "importante"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
+              "$ref": "#/definitions/AddCategory"
             }
           },
           "500": {
@@ -163,7 +150,10 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Obtencion de todas las tareas con categorias",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -188,7 +178,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Obtencion de todas las tareas con categorias",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -205,7 +198,16 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Busqueda de id para seleccionar tarea a modificar"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos para nuevo registro",
+            "schema": {
+              "$ref": "#/definitions/AddTask"
+            }
           }
         ],
         "responses": {
@@ -250,20 +252,79 @@
           {
             "name": "body",
             "in": "body",
-            "description": "datos para nuevo registro",
+            "description": "Datos para nuevo registro",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/AddTask"
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Registro de nueva tarea",
+            "schema": {
+              "$ref": "#/definitions/AddTask"
+            }
           },
           "500": {
             "description": "Internal Server Error"
           }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Importante"
+        }
+      }
+    },
+    "Task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Completar Modulo tareas"
+        },
+        "idCategory": {
+          "type": "number",
+          "example": 1
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        }
+      }
+    },
+    "AddTask": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Completar Modulo tareas"
+        },
+        "idCategory": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "AddCategory": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "importante"
         }
       }
     }

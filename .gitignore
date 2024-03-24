@@ -143,6 +143,7 @@ dist
 .svelte-kit
 
 *.sql
+*.txt
 
 docker-compose.yml
 Dockerfile

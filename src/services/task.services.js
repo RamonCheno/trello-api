@@ -7,13 +7,27 @@ class TaskServices {
 
     async find() {
         const res = await taskModel.findAll({
-            include: [{ model: categoryModel, required: true }]
-        });
+            include: [
+                {
+                    model: categoryModel,
+                    required: true
+                }
+            ]
+        }
+        );
         return res;
     }
 
     async findOne(id) {
-        const res = await taskModel.findByPk(id);
+        const res = await taskModel.findByPk(id, {
+            include: [
+                {
+                    model: categoryModel,
+                    required: true
+                }
+            ]
+        }
+        );
         return res;
     }
 

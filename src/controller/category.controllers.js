@@ -4,13 +4,20 @@ const services = new CategoryServices();
 
 const create = async (req, res) => {
     // #swagger.tags = ["Category"]
+    /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Datos para nuevo registro',
+        schema:{
+            $ref: '#/definitions/AddCategory'
+        }
+    } */
     try {
         const response = await services.create(req.body);
         res.status(201).json({ success: true, data: response });
         /* #swagger.responses[201] = {
             description: 'Registro de nueva categoria',
             schema: {
-                name: 'importante'
+                $ref: '#/definitions/AddCategory'
             }
         } */
     } catch (error) {
@@ -24,10 +31,9 @@ const getAll = async (req, res) => {
         const response = await services.find();
         res.json(response);
         /* #swagger.responses[200] = {
-            description: 'Obtencion de todas la categorias',
+            description: 'Obtencion de todas las categorias',
             schema: {
-                id: 1,
-                name: 'importante'
+                $ref: '#/definitions/Category'
             }
         } */
     } catch (error) {
@@ -44,8 +50,7 @@ const getById = async (req, res) => {
         /* #swagger.responses[200] = {
             description: 'Obtencion de una categoria por id',
             schema: { 
-                id: 1,
-                name: 'importante'
+                $ref: '#/definitions/Category'
             }
         } */
     } catch (error) {
@@ -55,11 +60,28 @@ const getById = async (req, res) => {
 
 const update = async (req, res) => {
     // #swagger.tags = ["Category"]
+    /* #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'Busqueda de id para seleccionar categoria a modificar',
+    } */
+    /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Datos para nuevo registro',
+        schema:{
+            $ref: '#/definitions/Category'
+        }
+    } */
     try {
         const { id } = req.params;
         const body = req.body;
         const response = await services.update(id, body);
         res.json(response);
+        /* #swagger.responses[200] = {
+            description: 'Resultado de la categoria modificada',
+            schema: { 
+                $ref: '#/definitions/Category'
+            }
+        } */
     } catch (error) {
         res.status(500).send({ success: false, message: error.message });
     }
