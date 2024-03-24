@@ -6,7 +6,7 @@ const doc = {
     title: 'Nodejs Express + PostgreSql API',
     description: 'Nodejs Express + PostgreSql API'
   },
-  host: 'localhost:8080',
+  host: 'localhost:3000',
   schemes: ["http"],
 };
 

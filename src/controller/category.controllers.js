@@ -3,34 +3,58 @@ const CategoryServices = require("../services/category.services");
 const services = new CategoryServices();
 
 const create = async (req, res) => {
+    // #swagger.tags = ["Category"]
     try {
         const response = await services.create(req.body);
-        res.json({ success: true, data: response });
+        res.status(201).json({ success: true, data: response });
+        /* #swagger.responses[201] = {
+            description: 'Registro de nueva categoria',
+            schema: {
+                name: 'importante'
+            }
+        } */
     } catch (error) {
         res.status(500).send({ success: false, message: error.message });
     }
 };
 
 const getAll = async (req, res) => {
+    // #swagger.tags = ["Category"]
     try {
         const response = await services.find();
         res.json(response);
+        /* #swagger.responses[200] = {
+            description: 'Obtencion de todas la categorias',
+            schema: {
+                id: 1,
+                name: 'importante'
+            }
+        } */
     } catch (error) {
         res.status(500).send({ success: false, message: error.message });
     }
 };
 
 const getById = async (req, res) => {
+    // #swagger.tags = ["Category"]
     try {
         const { id } = req.params;
         const response = await services.findOne(id);
         res.json(response);
+        /* #swagger.responses[200] = {
+            description: 'Obtencion de una categoria por id',
+            schema: { 
+                id: 1,
+                name: 'importante'
+            }
+        } */
     } catch (error) {
         res.status(500).send({ success: false, message: error.messagge });
     }
 };
 
 const update = async (req, res) => {
+    // #swagger.tags = ["Category"]
     try {
         const { id } = req.params;
         const body = req.body;
@@ -42,6 +66,7 @@ const update = async (req, res) => {
 };
 
 const _delete = async (req, res) => {
+    // #swagger.tags = ["Category"]
     try {
         const { id } = req.params;
         const response = await services.delete(id);

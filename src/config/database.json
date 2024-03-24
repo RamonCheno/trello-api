@@ -2,24 +2,24 @@
   "development": {
     "username": "postgres",
     "password": "password",
-    "database": "trellodb",
-    "host": "postgresdb",
+    "database": "trelloapi",
+    "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432
   },
   "test": {
     "username": "postgres",
     "password": "password",
-    "database": "trellodb",
-    "host": "postgresdb",
+    "database": "trelloapi",
+    "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432
   },
   "production": {
     "username": "postgres",
     "password": "password",
-    "database": "trellodb",
-    "host": "postgresdb",
+    "database": "trelloapi",
+    "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432
   }

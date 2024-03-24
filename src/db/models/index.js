@@ -15,6 +15,7 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
   console.log("Conexion correcta");
+  console.log("Base de datos: ", config.database);
 }
 
 fs
