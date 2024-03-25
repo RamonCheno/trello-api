@@ -1,6 +1,6 @@
 const express = require("express");
-const categoryRouter = require('./category.router');
-const tasksRouter = require('./tasks.router');
+const categoryRouter = require('./category.routes');
+const tasksRouter = require('./tasks.routes');
 
 function routerApi(app){
     const router = express.Router();

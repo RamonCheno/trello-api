@@ -1,3 +1,5 @@
+const { sequelize } = require('./../db/models');
+
 const taskModel = require('./../db/models').Tasks;
 const categoryModel = require('./../db/models').Category;
 

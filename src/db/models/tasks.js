@@ -20,9 +20,15 @@ module.exports = (sequelize, DataTypes) => {
   Tasks.init({
     name: DataTypes.STRING,
     idCategory: DataTypes.INTEGER,
+    day: DataTypes.DATEONLY,
+    hours: DataTypes.TIME,
+    complete: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Tasks',
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false
   });
   return Tasks;
 };

@@ -10,7 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       idCategory: {
         type: Sequelize.INTEGER,
@@ -21,13 +22,17 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      createdAt: {
+      day: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
-      updatedAt: {
+      hours: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.TIME
+      },
+      complete: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       }
     });
   },

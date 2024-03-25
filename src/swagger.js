@@ -19,7 +19,8 @@ const doc = {
       idCategory: 1,
       category: { 
         $ref: '#/definitions/Category'
-      }
+      },
+      day: ''
     },
     AddTask:{
       name: 'Completar Modulo tareas',

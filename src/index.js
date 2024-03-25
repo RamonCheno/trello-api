@@ -1,5 +1,5 @@
 const express = require("express");
-const routerApi = require('./routes/index.router');
+const routerApi = require('./routes/index.routes');
 const swaggerDocs = require("./controller/swagger.controller");
 const cors = require("cors");
 const dotenv = require('dotenv');
@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 // }
 
 const corsOption = {
-    origin: "http://localhost:3000"
+    origin: "http://localhost:5173"
 };
 
 //middlewares
