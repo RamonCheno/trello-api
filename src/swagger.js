@@ -16,15 +16,19 @@ const doc = {
     Task: {
       id: 1,
       name: 'Completar Modulo tareas',
+      day: '2024-03-24',
+      hours: '17:21:00',
+      complete: false,
       idCategory: 1,
-      category: { 
+      Category: {
         $ref: '#/definitions/Category'
       },
-      day: ''
     },
     AddTask:{
       name: 'Completar Modulo tareas',
-      idCategory:1
+      day: '2024-03-24',
+      hours: '17:21:00',
+      idCategory: 1
     },
     AddCategory:{
       name: 'importante'
@@ -33,7 +37,7 @@ const doc = {
 };
 
 const outputFile = './swagger.json';
-const endPointsFiles = ['./routes/index.router.js'];
+const endPointsFiles = ['./routes/index.routes.js'];
 
 swaggerAutogen(outputFile, endPointsFiles, doc).then(() => {
   require('./index.js');

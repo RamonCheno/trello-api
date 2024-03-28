@@ -15,12 +15,8 @@ const port = process.env.PORT || 3000;
 //     credential: true,
 // }
 
-const corsOption = {
-    origin: "http://localhost:5173"
-};
-
 //middlewares
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

@@ -1,5 +1,3 @@
-const { sequelize } = require('./../db/models');
-
 const taskModel = require('./../db/models').Tasks;
 const categoryModel = require('./../db/models').Category;
 
@@ -9,27 +7,30 @@ class TaskServices {
 
     async find() {
         const res = await taskModel.findAll({
-            include: [
-                {
-                    model: categoryModel,
-                    required: true
-                }
-            ]
-        }
-        );
+            include: categoryModel
+        });
         return res;
     }
 
-    async findOne(id) {
-        const res = await taskModel.findByPk(id, {
+    async findByComplete(value) {
+        const res = await taskModel.findAll({
+            where: {
+                complete: value
+            },
             include: [
                 {
-                    model: categoryModel,
-                    required: true
+                    model: categoryModel
                 }
             ]
-        }
-        );
+        });
+        return res;
+    }
+
+
+    async findId(id) {
+        const res = await taskModel.findByPk(id, {
+            include: categoryModel,
+        });
         return res;
     }
 
@@ -39,15 +40,25 @@ class TaskServices {
     }
 
     async update(id, data) {
-        const model = await this.findOne(id);
-        const res = await model.update(data);
-        return res;
+        const model = await this.findId(id);
+        if (model !== null) {
+            const res = await model.update(data);
+            return {updated: true, res};
+        } else {
+            return false
+        }
+
     }
 
     async delete(id) {
-        const model = await this.findOne(id);
-        await model.destroy();
-        return { deleted: true };
+        const model = await this.findId(id);
+        if (model !== null) {
+            await model.destroy();
+            return { deleted: true };
+        } else {
+            return false;
+        }
+
     }
 
 }
