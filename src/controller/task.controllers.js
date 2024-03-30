@@ -22,7 +22,7 @@ const create = async (req, res) => {
             }
         } */
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -31,12 +31,12 @@ const getAll = async (req, res) => {
     try {
         const response = await services.find();
         if (response.length === 0) {
-            res.status(404).send({ success: false, message: "No encontrado" });
+            res.status(404).json({ success: false, message: "No encontrado" });
             /* #swagger.responses[404] = {
                 'description':"registro no encontrado"
             } */
         } else {
-            res.json(response);
+            res.status(200).json(response);
             /* #swagger.responses[200] = {
                 description: 'Obtencion de todas las tareas con categorias',
                 schema: {
@@ -46,7 +46,7 @@ const getAll = async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -61,50 +61,22 @@ const getById = async (req, res) => {
         const { id } = req.params;
         const response = await services.findId(id);
         if (response !== null) {
-            res.json(response);
+            res.status(200).json(response);
             /* #swagger.responses[200] = {
                 description: 'Obtencion de todas las tareas con categorias',
                 schema: {
                     $ref: '#/definitions/Task'
                 }
             } */
-        } {
-            res.status(404).send({ success: false, message: "No encontrado" });
-            /* #swagger.responses[404] = {
-                'description':"registro no encontrado"
-            } */
-        }
-
-    } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
-    }
-};
-
-const getByComplete = async (req, res) => {
-    // #swagger.tags = ["Task"]
-    /* #swagger.parameters['complete'] = {
-    in: 'query',
-    type: 'boolean'
-} */
-    try {
-        const { complete } = req.query;
-        const response = await services.findByComplete(complete);
-        if (response.length !== 0) {
-            /* #swagger.responses[200] = {
-            schema: {
-                $ref: '#/definitions/Task'
-            }
-        } */
-            res.status(200).json(response);
         } else {
-            res.status(404).send({ success: false, message: "No encontrado" });
+            res.status(404).json({ success: false, message: "No encontrado" });
             /* #swagger.responses[404] = {
                 'description':"registro no encontrado"
             } */
         }
 
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -135,14 +107,14 @@ const update = async (req, res) => {
         } */
             res.status(200).json(response);
         } else {
-            res.status(404).send({ success: false, message: "No encontrado" });
+            res.status(404).json({ success: false, message: "No encontrado" });
 
             /* #swagger.responses[404] = {
                 'description':"registro no encontrado"
             } */
         }
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -152,18 +124,18 @@ const _delete = async (req, res) => {
         const { id } = req.params;
         const response = await services.delete(id);
         if (response != false) {
-            res.json(response);
+            res.send(response);
         } else {
-            res.status(404).send({ success: false, message: "No encontrado" });
+            res.status(404).json({ success: false, message: "No encontrado" });
             /* #swagger.responses[404] = {
                 'description':"registro no encontrado"
             } */
         }
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 }
 
 module.exports = {
-    create, getAll, getById, update, _delete, getByComplete
+    create, getAll, getById, update, _delete
 };

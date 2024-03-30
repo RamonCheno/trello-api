@@ -287,35 +287,6 @@
           }
         }
       }
-    },
-    "/api/v1/tasks/all/complete-task": {
-      "get": {
-        "tags": [
-          "Task"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "complete",
-            "in": "query",
-            "type": "boolean"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
-          },
-          "404": {
-            "description": "registro no encontrado"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
     }
   },
   "definitions": {
@@ -378,6 +349,10 @@
         "hours": {
           "type": "string",
           "example": "17:21:00"
+        },
+        "complete": {
+          "type": "boolean",
+          "example": false
         },
         "idCategory": {
           "type": "number",

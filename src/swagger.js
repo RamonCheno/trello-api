@@ -28,6 +28,7 @@ const doc = {
       name: 'Completar Modulo tareas',
       day: '2024-03-24',
       hours: '17:21:00',
+      complete: false,
       idCategory: 1
     },
     AddCategory:{

@@ -12,24 +12,24 @@ class TaskServices {
         return res;
     }
 
-    async findByComplete(value) {
-        const res = await taskModel.findAll({
-            where: {
-                complete: value
-            },
-            include: [
-                {
-                    model: categoryModel
-                }
-            ]
-        });
-        return res;
-    }
+    // async findByComplete(value) {
+    //     const res = await taskModel.findAll({
+    //         where: {
+    //             complete: value
+    //         },
+    //         include: [
+    //             {
+    //                 model: categoryModel
+    //             }
+    //         ]
+    //     });
+    //     return res;
+    // }
 
 
     async findId(id) {
         const res = await taskModel.findByPk(id, {
-            include: categoryModel,
+            include: categoryModel
         });
         return res;
     }
