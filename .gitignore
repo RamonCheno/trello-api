@@ -148,7 +148,6 @@ dist
 docker-compose.yml
 Dockerfile
 .dockerignore
-.src/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/node
