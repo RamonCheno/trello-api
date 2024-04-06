@@ -9,14 +9,14 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-const corsOpton = {
+const corsOption = {
     origin: "http://192.168.1.82:5173",
     methods: ["POST", "GET"],
     credential: true,
 }
 
 //middlewares
-app.use(cors());
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
