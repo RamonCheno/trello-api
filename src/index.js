@@ -9,11 +9,11 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-// const corsOpton = {
-//     origin: "http://192.168.1.82:5173",
-//     methods: ["POST", "GET"],
-//     credential: true,
-// }
+const corsOpton = {
+    origin: "http://192.168.1.82:5173",
+    methods: ["POST", "GET"],
+    credential: true,
+}
 
 //middlewares
 app.use(cors());
