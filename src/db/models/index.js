@@ -12,11 +12,12 @@ const db = {};
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
   console.log("Conexion iniciada");
-  console.log("Base de datos: ", config.database);
+  console.log("Base de datos: ", sequelize.getDatabaseName());
   console.log(env);
+} else {
+  sequelize = new Sequelize(config.url);
+  console.log(sequelize.url);
 }
 
 fs
