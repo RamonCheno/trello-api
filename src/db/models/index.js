@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../../config/database.js')[env];
+const config = require(__dirname + '/../../config/database')[env];
 const db = {};
 
 let sequelize;
@@ -16,8 +16,8 @@ if (config.use_env_variable) {
   console.log("Base de datos: ", sequelize.getDatabaseName());
   console.log(env);
 } else {
-  sequelize = new Sequelize(config.url);
-  console.log(sequelize.url);
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  console.log(env);
 }
 
 fs

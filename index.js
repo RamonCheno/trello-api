@@ -1,13 +1,21 @@
 const express = require("express");
-const routerApi = require('./routes/index.routes');
-const swaggerDocs = require("./controller/swagger.controller");
+const routerApi = require('./src/routes/index.routes');
+const swaggerDocs = require("./src/controller/swagger.controller");
+// require('./.env.production');
 const cors = require("cors");
-const dotenv = require('dotenv');
 
-dotenv.config();
+// const envFile = [];
+
+
+
+require('dotenv').config({
+    path: './.env.development.local'
+});
 const app = express();
 
 const port = process.env.PORT || 3000;
+console.log(process.env);
+console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 
 const corsOption = {
     origin: "http://192.168.1.82:5173",
@@ -27,5 +35,5 @@ routerApi(app);
 app.use(swaggerDocs);
 
 app.listen(port, () => {
-    console.log("servidor en puerto ", port);
+    console.log("servidor en puerto:", port);
 });

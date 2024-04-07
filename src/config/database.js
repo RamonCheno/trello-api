@@ -1,28 +1,30 @@
-require('dotenv').config();
+// require('dotenv').config({
+//   path: ["./.env.development", "./.env.production"],
+// });
 
 module.exports = {
   "development": {
-    "username": process.env.DATABASE_USERDEV,
-    "password": process.env.DATABASE_PASSWORDDEV,
-    "database": process.env.DATABASE_NAMEDEV,
-    "host": process.env.DATABASE_HOSTDEV,
+    "username": process.env.DATABASE_USER,
+    "password": process.env.DATABASE_PASSWORD,
+    "database": process.env.DATABASE_NAME,
+    "host": process.env.DATABASE_HOST,
     "dialect": 'postgres',
-    'port': process.env.DATABASE_PORTDEV
+    "port": process.env.DATABASE_PORT
   },
   "test": {
-    "username": process.env.POSTGRES_USER,
-    "password": process.env.POSTGRES_PASSWORD,
-    "database": process.env.POSTGRES_DBNAME,
-    "host": process.env.POSTGRES_HOST,
+    "username": process.env.DATABASE_USER,
+    "password": process.env.DATABASE_PASSWORD,
+    "database": process.env.DATABASE_NAME,
+    "host": process.env.DATABASE_HOST,
     "dialect": 'postgres',
     // 'port': process.env.POSTGRES_PORT
   },
   "production": {
-    "username": process.env.POSTGRES_USER,
-    "password": process.env.POSTGRES_PASSWORD,
-    "database": process.env.POSTGRES_DBNAME,
-    "host": process.env.POSTGRES_HOST,
+    "username": process.env.DATABASE_USER,
+    "password": process.env.DATABASE_PASSWORD,
+    "database": process.env.DATABASE_NAME,
+    "host": process.env.DATABASE_HOST,
     "dialect": 'postgres',
     // 'port': process.env.POSTGRES_PORT
   }
-}
+};
