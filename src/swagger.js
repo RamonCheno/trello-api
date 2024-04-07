@@ -6,7 +6,7 @@ const doc = {
     title: 'Nodejs Express + PostgreSql API',
     description: 'Nodejs Express + PostgreSql API'
   },
-  host: 'localhost:3000',
+  host: 'https://embarrassing-angil-chenodev.koyeb.app',
   schemes: ["http"],
   definitions: {
     Category: {
